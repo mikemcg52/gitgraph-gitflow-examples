@@ -150,9 +150,6 @@ var develop = gitGraph.branch({
 	name: "develop",
 	column: developCol
 });
-develop.commit({
-	messageDisplay: false
-});
 
 // create support hotfix branch
 var support_10x = gitGraph.branch({
@@ -168,20 +165,13 @@ support_10x.commit({
 	messageColor: "red"
 }).commit(bugFixCommit);
 
-support_10x.merge(master, {message: "Merge 1.0.1 into master and Push to production", messageColor: "red",})
+support_10x.merge(master, {message: "Merge into master and Push to production", messageColor: "red",})
 
 // create another support hotfix branch
 var support_20x = gitGraph.branch({
 	parentBranch: master,
 	name: "support/v1.0.2",
 	column: supportCol
-});
-
-// create another support hotfix branch
-var support_30x = gitGraph.branch({
-	parentBranch: master,
-	name: "support/v1.0.3",
-	column: support2Col
 });
 
 support_20x.commit({
@@ -191,20 +181,7 @@ support_20x.commit({
 	messageColor: "red",
 }).commit(bugFixCommit);
 
-support_30x.commit({
-	message: "Start v1.0.3-rc Release Candidate builds",
-	tag: "v1.0.3-rc",
-	tagColor: 'gray',
-	messageColor: "red",
-}).commit(bugFixCommit);
-
-support_20x.merge(master, {message: "Merge 1.0.2 into master and Push to production", messageColor: "red",})
-master.merge(support_30x, {message: "Merge master into 1.0.3 branch",
-	messageColor: "blue",
-	messageFont: "normal 14pt Arial",
-	messageDisplay: "bold"
-})
-support_30x.merge(master, {message: "Merge 1.0.3 into master and Push to production", messageColor: "red",})
+support_20x.merge(master, {message: "Merge into master and Push to production", messageColor: "red",})
 
 /*develop.commit({
 	messageDisplay: false
@@ -213,6 +190,9 @@ support_30x.merge(master, {message: "Merge 1.0.3 into master and Push to product
 /*master.commit({
 	messageDisplay: false
 });*/
+develop.commit({
+	messageDisplay: false
+});
 
 var feature1 = gitGraph.branch({
 	parentBranch: develop,
@@ -234,7 +214,6 @@ feature1.merge(develop, {messageColor: "green"});
 feature2.commit({
 	message: "Another feature to go into v2.0.0",
 	messageColor: "green"}).commit({messageDisplay: false});
-develop.merge(feature2, {messageColor: "green"})
 feature2.merge(develop, {messageColor: "green"});
 
 var release_100 = gitGraph.branch({
