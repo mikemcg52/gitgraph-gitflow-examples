@@ -60,25 +60,7 @@ var graphConfig = new GitGraph.Template({
 			displayHash: false,
 		}
 	},
-	/*merge: {
-		spacingY: -30,
-		dot: {
-			size: 8,
-			strokeColor: "#000000",
-			strokeWidth: 4
-		},
-		tag: {
-			font: "normal 10pt Arial",
-			color: "yellow"
-		},
-		message: {
-			color: "blue",
-			font: "normal 14pt Arial",
-			displayAuthor: false,
-			displayBranch: false,
-			displayHash: false,
-		}
-	},*/
+
 	arrow: {
 		size: 8,
 		offset: 3
@@ -102,11 +84,13 @@ var stabilizationCommit = {
 
 var featureCol = 0;
 var featureCol2 = 1;
-var developCol = 2;
-var releaseCol = 3;
-var supportCol = 5;
-var support2Col = 6;
-var masterCol = 4;
+var featureCol3 = 2;
+var featureCol4 =3;
+var release1Col = 4;
+var release2Col = 5;
+var supportCol = 7;
+var support2Col = 8;
+var masterCol = 6;
 
 var myTemplate = new GitGraph.Template(myTemplateConfig);
 
@@ -145,10 +129,13 @@ gitGraph.commit({
 });
 
 // create development branch
-var develop = gitGraph.branch({
+var release1 = gitGraph.branch({
 	parentBranch: master,
-	name: "develop",
-	column: developCol
+	name: "release 2.0.0",
+	column: release1Col
+});
+release1.commit({
+	messageDisplay: false
 });
 
 // create support hotfix branch
@@ -173,7 +160,12 @@ var support_20x = gitGraph.branch({
 	name: "support/v1.0.2",
 	column: supportCol
 });
-
+// create another support hotfix branch
+var support_30x = gitGraph.branch({
+	parentBranch: master,
+	name: "support/v1.0.3",
+	column: support2Col
+});
 support_20x.commit({
 	message: "Start v1.0.2-rc Release Candidate builds",
 	tag: "v1.0.2-rc",
@@ -181,7 +173,21 @@ support_20x.commit({
 	messageColor: "red",
 }).commit(bugFixCommit);
 
+support_30x.commit({
+	message: "Start v1.0.3-rc Release Candidate builds",
+	tag: "v1.0.3-rc",
+	tagColor: 'gray',
+	messageColor: "red",
+}).commit(bugFixCommit);
+
 support_20x.merge(master, {message: "Merge into master and Push to production", messageColor: "red",})
+
+master.merge(support_30x, {message: "Merge master into 1.0.3 branch",
+	messageColor: "blue",
+	messageFont: "normal 14pt Arial",
+	messageDisplay: "bold"
+})
+support_30x.merge(master, {message: "Merge 1.0.3 into master and Push to production", messageColor: "red",})
 
 /*develop.commit({
 	messageDisplay: false
@@ -190,17 +196,17 @@ support_20x.merge(master, {message: "Merge into master and Push to production", 
 /*master.commit({
 	messageDisplay: false
 });*/
-develop.commit({
+release1.commit({
 	messageDisplay: false
 });
 
 var feature1 = gitGraph.branch({
-	parentBranch: develop,
+	parentBranch: release1,
 	name: "feature/1",
 	column: featureCol
 });
 var feature2 = gitGraph.branch({
-	parentBranch: develop,
+	parentBranch: release1,
 	name: "feature/2",
 	column: featureCol2
 });
@@ -208,26 +214,55 @@ feature1.commit({
 	message: "A feature to go into v2.0.0",
 	messageColor: "green"})
 	.commit({messageDisplay: false});
-feature1.merge(develop, {messageColor: "green"});
+feature1.merge(release1, {messageColor: "green"});
 
+var release2 = gitGraph.branch({
+	parentBranch: master,
+	name: "release 3.0.0",
+	column: release2Col
+})
+release2.commit({messageDisplay: false})
+
+var feature3 = gitGraph.branch({
+	parentBranch: release2,
+	name: "feature/3",
+	column: featureCol3
+});
+var feature4 = gitGraph.branch({
+	parentBranch: release2,
+	name: "feature/4",
+	column: featureCol4
+});
+feature3.commit({
+	message: "A feature to go into v3.0.0",
+	messageColor: "brown"})
+	.commit({messageDisplay: false});
+feature3.merge(release2, {messageColor: "brown"});
 
 feature2.commit({
 	message: "Another feature to go into v2.0.0",
 	messageColor: "green"}).commit({messageDisplay: false});
-feature2.merge(develop, {messageColor: "green"});
 
-var release_100 = gitGraph.branch({
-	parentBranch: develop,
+release1.merge(feature2, {messageColor: "green"})
+feature2.merge(release1, {messageColor: "green"});
+
+feature4.commit({
+	message: "Another feature to go into v3.0.0",
+	messageColor: "brown"}).commit({messageDisplay: false});
+feature4.merge(release2, {messageColor: "brown"});
+
+/*var release_100 = gitGraph.branch({
+	parentBranch: release1,
 	name: "release/v2.0.0",
-	column: releaseCol
-});
-master.merge(release_100, {message: "Merge master into release branch",
+	column: release1Col
+});*/
+master.merge(release1, {message: "Merge master into release branch",
 		messageColor: "blue",
 		messageFont: "normal 14pt Arial",
 		messageDisplay: "bold"
 })
 
-release_100.commit({
+release1.commit({
 	message: "Start v2.0.0-rc Release Candidate builds",
 	tag: "v2.0.0-rc",
 	tagColor: 'gray'
@@ -235,19 +270,34 @@ release_100.commit({
 /*develop.commit({
 	messageDisplay: false
 });*/
-release_100.commit(stabilizationCommit);
+release1.commit(stabilizationCommit);
 
-release_100.merge(master, {
+release1.merge(master, {
 	dotStrokeWidth: 10,
 	message: "Release v2.0.0 tagged",
 	tag: "v2.0.0"
 });
-master.merge(develop,
-	{ messageColor: "blue",
+master.merge(release2,
+	{ message: "Merge master into release branch",
+		messageColor: "blue",
 	messageFont: "normal 14pt Arial",
 	messageDisplay: "bold"});
 
+release2.commit({
+	message: "Start v3.0.0-rc Release Candidate builds",
+	tag: "v3.0.0-rc",
+	tagColor: 'gray'
+});
+/*develop.commit({
+	messageDisplay: false
+});*/
+release2.commit(stabilizationCommit);
 
+release2.merge(master, {
+	dotStrokeWidth: 10,
+	message: "Release v3.0.0 tagged",
+	tag: "v3.0.0"
+});
 
 /*gitGraph.branch("HotFix 1", {parentBranch: "master"})
 
