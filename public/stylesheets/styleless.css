@@ -1,0 +1,16 @@
+/* line 2, /Users/mikemcg/gitgraph_test/public/stylesheets/style.less */
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+/* line 7, /Users/mikemcg/gitgraph_test/public/stylesheets/style.less */
+a {
+  color: #00b7ff;
+}
+/* line 10, /Users/mikemcg/gitgraph_test/public/stylesheets/style.less */
+li {
+  color: #00B7FF;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: block;
+}
