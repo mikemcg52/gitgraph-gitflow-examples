@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitGraph Test1</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/gitgraph.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-theme.css">
+    <script src="javascripts/jquery-2.1.3.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <style>
+        .hotfix {
+            margin-top: 40px;
+        }
+        .hotfix-overlap {
+            margin-top: 68px;
+        }
+        .hotfix-overlap-backmerge {
+            margin-top: 127px;
+        }
+        .feature-dev {
+            margin-top: 40px;
+        }
+        .feature-dev-backmerge {
+            margin-top: 63px;
+        }
+        .release-branch {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<h1>GitFlow Example 1 - Single development branch w/Feature branches</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-1">
+        <canvas id="gitGraph"></canvas>
+
+    </div>
+    <div id="notations" class="col-md-4">
+        <h2>Notations</h2>
+        <p>The Master branch is always in synch with Production.</p>
+        <p>We create a Development branch for the new release work</p>
+        <p class="hotfix">
+            We may have the need to create hot fixes to deal with Production problems.
+            These are branched off of Master.  When the hot fix is ready to push to Production this branch is
+            merged back into master and deployed to Production.</p>
+        <p class="hotfix-overlap">
+            Multiple hot fixes may be worked on in parallel.
+        </p>
+        <p class="hotfix-overlap-backmerge">
+            When this is the case we should do a "back merge" from
+            master into the hot fix branch where we resolve any merge issues.  Once this is done, this branch can be
+            merged into master and deployed to Production
+        </p>
+        <p class="feature-dev">
+            Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature
+            is complete it can be merged into the development branch.  If there are questions about whether to include
+            the feature in the release or not it should not be merged until those questions are resolved.
+        </p>
+        <p class="feature-dev-backmerge">
+            Multiple feature branches can be worked on in parallel.  When this occurs a "back merge" from the development
+            branch to the feature branch should be done before generating a pull request to resolve any potential merge
+            problems.
+        </p>
+        <p class="release-branch">
+            When the development branch is ready for release a release branch is created off of development.  Doing this frees the development
+            branch up so work can begin on the next release.  At this point the master branch should be "back merged"
+            into the release branch to resolve any merge conflicts that may have arisen from hot fixes applied to master.
+        </p>
+        <p class="release-branch-release">
+            While testing the release bug fixes may need to be applied.  These should be done on the release branch (
+            a bug branch can be created here if the bug fix is complicated so as not to delay testing because of "work in
+            progress".  Once the testing is complete the release branch is merged into master and the release pushed to
+            production.
+        </p>
+        <p class="final-backmerge">
+            The final step in this cycle is to merge master back into development.  This insures that development has all
+            of the bug fixes created during the release testing cycle as well as all of the hot fixes from master.
+        </p>
+    </div>
+</div>
+    <script src="javascripts/gitgraph.js"></script>
+    <script src="javascripts/gitflow-example1.js"></script>
+
+</body>
+
+</html>
