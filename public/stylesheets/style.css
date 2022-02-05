@@ -11,4 +11,8 @@ li {
   color: #33c5ff;
   display: block;
 }
+
+#gitGraph {
+  max-width: 1800px;
+}
 /*# sourceMappingURL=style.css.map */
