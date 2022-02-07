@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const controllers = require('./controllers/examples');
 
 var app = express();
 
@@ -24,12 +25,17 @@ app.use('/', indexRouter);
 app.get('/1', (req, res) => {
 	res.sendFile(path.join(__dirname+'/public/example1.html'));
 });
+app.get('/1a', controllers.example1);
+
 app.get('/2', (req, res) => {
 	res.sendFile(path.join(__dirname+'/public/example2.html'));
 });
 app.get('/3', (req, res) => {
 	res.sendFile(path.join(__dirname+'/public/example3.html'));
 });
+app.get('/sample', (req, res) => {
+  res.sendFile(path.join(__dirname+'/public/sample.html'));
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

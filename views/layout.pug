@@ -2,9 +2,27 @@ doctype html
 html
   head
     title= title
+    link(rel="stylesheet", href="stylesheets/gitgraph.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.css')
+    script(src='/javascripts/jquery-2.1.3.js')
+    script(src='javascripts/bootstrap.min.js')
+    script(src='/javascripts/gitgraph.js')
+    script.
+      function clickFunction(commit) {
+          //alert(`Commit ${commit.hash} selected`);
+          const msg = info.find((el) => {
+              if (el.hash === commit.hash) {
+                  return el;
+              }
+          })
+          if (msg !== null) {
+              alert(msg.label);
+          } else {
+              alert(`Not found ${commit.hash}`)
+          }
+      }
   body
     .row
       img.col-md-2(src='/images/BostonCIO_Logo.jpg')

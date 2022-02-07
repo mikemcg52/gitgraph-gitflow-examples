@@ -1,0 +1,72 @@
+extends layout
+
+block content
+  script(src="/javascripts/gitflow-example1.js")
+  h2= title
+
+  style.
+    #title {
+        margin-left: 10%;
+    }
+    .hotfix {
+        margin-top: 40px;
+    }
+    .hotfix-overlap {
+        margin-top: 68px;
+    }
+    .hotfix-overlap-backmerge {
+        margin-top: 127px;
+    }
+    .feature-dev {
+        margin-top: 40px;
+    }
+    .feature-dev-backmerge {
+        margin-top: 63px;
+    }
+    .release-branch {
+        margin-top: 30px;
+    }
+
+  .row 
+    #graph-container 
+
+  script.
+    const info = !{JSON.stringify(data)};
+    $('document').ready(() => {
+        // Simulate git commands with Gitgraph API.
+        
+
+        //- const develop = master.branch("develop");
+        //- develop.commit({ subject: "Add TypeScript",
+        //-     //...commitOptions
+        //-     hash: info[index].hash,
+        //-     hashAbbrev: info[index].hash.substring(0,5),
+        //-     ...commitOptions
+        //- });
+
+        //- const aFeature = develop.branch("a-feature");
+        //- aFeature
+        //-     .commit("Make this work")
+        //-     .commit("Make it right")
+        //-     .commit("Make it fast");
+
+        //- develop.merge(aFeature);
+        //- develop.commit("Prepare v1");
+
+        //- master.merge(develop).tag("v1.0.0");
+
+        //- function clickFunction(commit) {
+        //-     //alert(`Commit ${commit.hash} selected`);
+        //-     const msg = info.find((el) => {
+        //-         if (el.hash === commit.hash) {
+        //-             return el;
+        //-         }
+        //-     })
+        //-     if (msg !== null) {
+        //-         alert(msg.label);
+        //-     } else {
+        //-         alert(`Not found ${commit.hash}`)
+        //-     }
+        //- }
+        })
+    
