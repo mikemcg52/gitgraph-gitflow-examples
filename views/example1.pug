@@ -7,6 +7,16 @@ block content
     const info = !{JSON.stringify(data)}
 
   h2= title
-
+  h4.instruction Click on a commit dot for a description of the process at that point
   .graph-holder 
     canvas#gitGraph 
+
+  .modal.fade#show-details(tabindex="-1", role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header 
+                h5.modal-title#modal-title Title 
+            .modal-body 
+                #commit-description 
+            .modal-footer 
+  

@@ -144,7 +144,7 @@ $('document').ready(() => {
 	gitGraph.commit({
 		message: "Initial Starting Point",
 		tag: "v1.0.0",
-		sha1: info[index].hash,
+		sha1: info[0].hash,
 		onClick: clickFunction,
 	});
 	index++;
@@ -157,7 +157,7 @@ $('document').ready(() => {
 	});
 	develop.commit({
 		messageDisplay: false,
-		sha1: info[index].hash,
+		sha1: info[1].hash,
 		onClick: clickFunction,
 	});
 	index++;
@@ -174,9 +174,9 @@ $('document').ready(() => {
 		tag: "v1.0.1-rc",
 		tagColor: 'gray',
 		messageColor: "red",
-		sha1: info[index].hash,
+		sha1: info[2].hash,
 		onClick: clickFunction,
-	}).commit({sha1: info[index].hash,
+	}).commit({sha1: info[2].hash,
 		onClick: clickFunction,
 		...bugFixCommit
 	});
@@ -184,8 +184,27 @@ $('document').ready(() => {
 	support_10x.merge(master, {
 		message: "Merge 1.0.1 into master and Push to production", 
 		messageColor: "red",
-		sha1: info[index].hash,
+		sha1: info[2].hash,
+		tag: "v1.0.1",
 		onClick: clickFunction,
+	})
+	index++;
+	const feature1 = gitGraph.branch({
+		parentBranch: develop,
+		name: "feature/1",
+		column: featureCol
+	});
+	feature1.commit({
+		message: "A feature to go into v2.0.0",
+		messageColor: "green",
+		sha1: info[5].hash,
+		onClick: clickFunction,
+	});
+	master.merge(develop, {
+		message: "Merge the hot fix into development",
+		messageColor: "red",
+		sha1: info[3].hash,
+		onClick: clickFunction
 	})
 	index++;
 
@@ -204,47 +223,73 @@ $('document').ready(() => {
 	});
 
 	support_20x.commit({
-		message: "Start v1.0.2-rc Release Candidate builds",
+		message: "Start v1.0.2-rc Release Candidate build",
 		tag: "v1.0.2-rc",
 		tagColor: 'gray',
 		messageColor: "red",
-		sha1: info[index].hash,
+		sha1: info[4].hash,
 		onClick: clickFunction,
-	}).commit({sha1: info[index].hash,
+	}).commit({sha1: info[4].hash,
 		onClick: clickFunction,
 		...bugFixCommit
 	});
 
 	support_30x.commit({
-		message: "Start v1.0.3-rc Release Candidate builds",
+		message: "Start v1.0.3-rc Release Candidate build",
 		tag: "v1.0.3-rc",
 		tagColor: 'gray',
 		messageColor: "red",
-		sha1: info[index].hash,
+		sha1: info[4].hash,
 		onClick: clickFunction,
-	}).commit({sha1: info[index].hash,
-		onClick: clickFunction,
-		...bugFixCommit
 	});
 
 	support_20x.merge(master, {
-		message: "Merge 1.0.2 into master and Push to production", 
+		message: "Merge 1.0.2 into master, push to production, and tag the commit", 
 		messageColor: "red",
-		sha1: info[index].hash,
+		sha1: info[4].hash,
+		tag: "v1.0.2",
 		onClick: clickFunction,
 	})
+	master.merge(develop, {
+		message: "Merge the hot fix into development",
+		messageColor: "red",
+		sha1: info[3].hash,
+		onClick: clickFunction
+	})
+	const feature2 = gitGraph.branch({
+		parentBranch: develop,
+		name: "feature/2",
+		column: featureCol2
+	});
+	feature2.commit({
+		message: "Another feature to go into v2.0.0",
+		messageColor: "green",
+		sha1: info[5].hash,
+		onClick: clickFunction,
+	});
 	master.merge(support_30x, {message: "Merge master into 1.0.3 branch",
 		messageColor: "blue",
-		messageFont: "normal 14pt Arial",
+		messageFont: "normal 12pt Arial",
 		messageDisplay: "bold",
-		sha1: info[index].hash,
+		sha1: info[4].hash,
 		onClick: clickFunction,
 	})
-	support_30x.merge(master, {
-		message: "Merge 1.0.3 into master and Push to production", 
-		messageColor: "red",
-		sha1: info[index].hash,
+	support_30x.commit({sha1: info[4].hash,
 		onClick: clickFunction,
+		...bugFixCommit
+	});
+	support_30x.merge(master, {
+		message: "Merge 1.0.3 into master, push to production, and tag the commit", 
+		messageColor: "red",
+		sha1: info[4].hash,
+		tag: "1.0.3",
+		onClick: clickFunction,
+	})
+	master.merge(develop, {
+		message: "Merge the hot fix into development",
+		messageColor: "red",
+		sha1: info[3].hash,
+		onClick: clickFunction
 	})
 	index++;
 	/*develop.commit({
@@ -255,48 +300,27 @@ $('document').ready(() => {
 		messageDisplay: false
 	});*/
 
-	var feature1 = gitGraph.branch({
-		parentBranch: develop,
-		name: "feature/1",
-		column: featureCol
-	});
-	var feature2 = gitGraph.branch({
-		parentBranch: develop,
-		name: "feature/2",
-		column: featureCol2
-	});
+	
 	feature1.commit({
-		message: "A feature to go into v2.0.0",
-		messageColor: "green",
-		sha1: info[index].hash,
+		messageDisplay: false,
+		sha1: info[5].hash,
 		onClick: clickFunction,
-	})
-		.commit({
-			messageDisplay: false,
-			sha1: info[index].hash,
-			onClick: clickFunction,
-		});
+	});
 	feature1.merge(develop, {messageColor: "green"});
 
-
 	feature2.commit({
-		message: "Another feature to go into v2.0.0",
-		messageColor: "green",
-		sha1: info[index].hash,
-		onClick: clickFunction,
-	}).commit({
 		messageDisplay: false,
-		sha1: info[index].hash,
+		sha1: info[5].hash,
 		onClick: clickFunction,
 	});
 	develop.merge(feature2, {
 		messageColor: "green",
-		sha1: info[index].hash,
+		sha1: info[5].hash,
 		onClick: clickFunction,
 	})
 	feature2.merge(develop, {
 		messageColor: "green",
-		sha1: info[index].hash,
+		sha1: info[5].hash,
 		onClick: clickFunction,
 	});
 
@@ -308,9 +332,9 @@ $('document').ready(() => {
 	master.merge(release_100, {
 		message: "Merge master into release branch",
 		messageColor: "blue",
-		messageFont: "normal 14pt Arial",
+		messageFont: "normal 12pt Arial",
 		messageDisplay: "bold",
-		sha1: info[index].hash,
+		sha1: info[5].hash,
 		onClick: clickFunction,
 	})
 
@@ -318,7 +342,7 @@ $('document').ready(() => {
 		message: "Start v2.0.0-rc Release Candidate builds",
 		tag: "v2.0.0-rc",
 		tagColor: 'gray',
-		sha1: info[index].hash,
+		sha1: info[5].hash,
 		onClick: clickFunction,
 	});
 	develop.commit({
@@ -339,7 +363,7 @@ $('document').ready(() => {
 	});
 	master.merge(develop,
 		{ messageColor: "blue",
-		messageFont: "normal 14pt Arial",
+		messageFont: "normal 12pt Arial",
 		messageDisplay: "bold",
 		sha1: info[index].hash,
 		onClick: clickFunction,
@@ -354,7 +378,10 @@ $('document').ready(() => {
 			}
 		})
 		if (msg !== null) {
-			alert(msg.label);
+			$('#modal-title').text(msg.title)
+			$('#commit-description').text(msg.label)
+			$('#show-details').modal('show')
+			//alert(msg.label);
 		} else {
 			alert(`Not found ${commit.sha1}`)
 		}
