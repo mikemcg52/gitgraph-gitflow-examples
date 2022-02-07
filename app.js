@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+const exampleController = require('./controllers/examples')
 var app = express();
 
 // view engine setup
@@ -24,6 +24,7 @@ app.use('/', indexRouter);
 app.get('/1', (req, res) => {
 	res.sendFile(path.join(__dirname+'/public/example1.html'));
 });
+app.get('/1p', exampleController.example1);
 app.get('/2', (req, res) => {
 	res.sendFile(path.join(__dirname+'/public/example2.html'));
 });

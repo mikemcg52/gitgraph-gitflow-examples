@@ -1,0 +1,12 @@
+extends layout.pug 
+
+
+block content
+  script(src='/javascripts/gitflow-example1.js')
+  script.
+    const info = !{JSON.stringify(data)}
+
+  h2= title
+
+  .graph-holder 
+    canvas#gitGraph 

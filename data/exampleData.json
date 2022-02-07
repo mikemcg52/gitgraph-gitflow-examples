@@ -1,0 +1,50 @@
+{
+    "example1": [
+        {
+            "label": "The Master branch is always in synch with Production.",
+            "hash": "0lp2x9vc0g22id11wf6cy1"
+        },
+        {
+            "label": "We create a Development branch for the new release work",
+            "hash": "sizwj37si5lrei27drfpwo"
+        },
+        {
+            "label": "We may have the need to create hot fixes to deal with Production problems.  These are branched off of Master.  When the hot fix is ready to push to Production this branch is merged back into master and deployed to Production.",
+            "hash": "h22rx8yqcgr086y0uinwubl"
+        },
+        {
+            "label": "Multiple hot fixes may be worked on in parallel. When this is the case we should do a 'back merge' from master into the hot fix branch where we resolve any merge issues.  Once this is done, this branch can be merged into master and deployed to Production.",
+            "hash": "ov5en04kig9t718m88vxk"
+        },
+        {
+            "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the development branch.  If there are questions about whether to include the feature in the release or not it should not be merged until those questions are resolved.",
+            "hash": "azzif0v909lnhgets56wdf"
+        },
+        {
+            "label": "Multiple feature branches can be worked on in parallel.  When this occurs a 'back merge' from the development branch to the feature branch should be done before generating a pull request to resolve any potential merge problems.",
+            "hash": "beydwq7s9zuwv987ln26c"
+        },
+        {
+            "label": "When the development branch is ready for release a release branch is created off of development.  Doing this frees the development branch up so work can begin on the next release.  At this point the master branch should be 'back merged' into the release branch to resolve any merge conflicts that may have arisen from hot fixes applied to master.",
+            "hash": "w0zo1dtq5jfptic6jfzst9"
+        },
+        {
+            "label": "While testing the release bug fixes may need to be applied.  These should be done on the release branch (a bug branch can be created here if the bug fix is complicated so as not to delay testing because of 'work in progress'.  Once the testing is complete the release branch is merged into master and the release pushed to production.",
+            "hash": "ne72o9bntd4l7t2eh74wa"
+        },
+        {
+            "label": "The final step in this cycle is to merge master back into development.  This insures that development has all of the bug fixes created during the release testing cycle as well as all of the hot fixes from master.",
+            "hash": "zh204u3tiwbv8s94v8mf"
+        },
+        {
+            "label": "",
+            "hash": "a6oyby2k106548f23rlyi"
+        }
+    ],
+    "example2": [
+
+    ],
+    "example3": [
+        
+    ]
+}
