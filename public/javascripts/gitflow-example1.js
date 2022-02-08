@@ -170,8 +170,8 @@ $('document').ready(() => {
 	});
 
 	support_10x.commit({
-		message: "Start v1.0.1-rc Release Candidate builds",
-		tag: "v1.0.1-rc",
+		message: "Hotfix branch created",
+		//tag: "v1.0.1-rc",
 		tagColor: 'gray',
 		messageColor: "red",
 		sha1: info[2].hash,
@@ -184,7 +184,7 @@ $('document').ready(() => {
 	support_10x.merge(master, {
 		message: "Merge 1.0.1 into master and Push to production", 
 		messageColor: "red",
-		sha1: info[2].hash,
+		sha1: info[13].hash,
 		tag: "v1.0.1",
 		onClick: clickFunction,
 	})
@@ -223,8 +223,8 @@ $('document').ready(() => {
 	});
 
 	support_20x.commit({
-		message: "Start v1.0.2-rc Release Candidate build",
-		tag: "v1.0.2-rc",
+		message: "Hotfix branch created",
+		//tag: "v1.0.2-rc",
 		tagColor: 'gray',
 		messageColor: "red",
 		sha1: info[4].hash,
@@ -235,18 +235,18 @@ $('document').ready(() => {
 	});
 
 	support_30x.commit({
-		message: "Start v1.0.3-rc Release Candidate build",
-		tag: "v1.0.3-rc",
+		message: "Additional hotfix branch created",
+		//tag: "v1.0.3-rc",
 		tagColor: 'gray',
 		messageColor: "red",
-		sha1: info[4].hash,
+		sha1: info[12].hash,
 		onClick: clickFunction,
 	});
 
 	support_20x.merge(master, {
 		message: "Merge 1.0.2 into master, push to production, and tag the commit", 
 		messageColor: "red",
-		sha1: info[4].hash,
+		sha1: info[10].hash,
 		tag: "v1.0.2",
 		onClick: clickFunction,
 	})
@@ -271,17 +271,17 @@ $('document').ready(() => {
 		messageColor: "blue",
 		messageFont: "normal 12pt Arial",
 		messageDisplay: "bold",
-		sha1: info[4].hash,
+		sha1: info[11].hash,
 		onClick: clickFunction,
 	})
-	support_30x.commit({sha1: info[4].hash,
+	support_30x.commit({sha1: info[14].hash,
 		onClick: clickFunction,
 		...bugFixCommit
 	});
 	support_30x.merge(master, {
 		message: "Merge 1.0.3 into master, push to production, and tag the commit", 
 		messageColor: "red",
-		sha1: info[4].hash,
+		sha1: info[10].hash,
 		tag: "1.0.3",
 		onClick: clickFunction,
 	})
@@ -291,22 +291,18 @@ $('document').ready(() => {
 		sha1: info[3].hash,
 		onClick: clickFunction
 	})
-	index++;
-	/*develop.commit({
-		messageDisplay: false
-	});*/
-
-	/*master.commit({
-		messageDisplay: false
-	});*/
-
 	
 	feature1.commit({
 		messageDisplay: false,
 		sha1: info[5].hash,
 		onClick: clickFunction,
 	});
-	feature1.merge(develop, {messageColor: "green"});
+	feature1.merge(develop, {
+		messageColor: "green",
+		message: "Merge the feature branch into development",
+		onClick: clickFunction,
+		sha1: info[15].hash
+	});
 
 	feature2.commit({
 		messageDisplay: false,
@@ -315,12 +311,12 @@ $('document').ready(() => {
 	});
 	develop.merge(feature2, {
 		messageColor: "green",
-		sha1: info[5].hash,
+		sha1: info[16].hash,
 		onClick: clickFunction,
 	})
 	feature2.merge(develop, {
 		messageColor: "green",
-		sha1: info[5].hash,
+		sha1: info[17].hash,
 		onClick: clickFunction,
 	});
 
@@ -334,22 +330,31 @@ $('document').ready(() => {
 		messageColor: "blue",
 		messageFont: "normal 12pt Arial",
 		messageDisplay: "bold",
-		sha1: info[5].hash,
+		sha1: info[18].hash,
 		onClick: clickFunction,
 	})
 
 	release_100.commit({
-		message: "Start v2.0.0-rc Release Candidate builds",
-		tag: "v2.0.0-rc",
+		message: "Start Release Candidate builds",
+		//tag: "v2.0.0-rc",
 		tagColor: 'gray',
-		sha1: info[5].hash,
+		sha1: info[19].hash,
 		onClick: clickFunction,
 	});
-	develop.commit({
-		messageDisplay: false
+	
+	const feature3 = gitGraph.branch({
+		parentBranch: develop,
+		name: "feature/3",
+		column: featureCol
 	});
+	feature3.commit({
+		messageDisplay: false,
+		sha1: info[22].hash,
+		onClick: clickFunction
+	});
+
 	release_100.commit({
-		sha1: info[index].hash,
+		sha1: info[19].hash,
 		onClick: clickFunction,
 		...stabilizationCommit
 	});
@@ -358,14 +363,14 @@ $('document').ready(() => {
 		dotStrokeWidth: 10,
 		message: "Release v2.0.0 tagged",
 		tag: "v2.0.0",
-		sha1: info[index].hash,
+		sha1: info[20].hash,
 		onClick: clickFunction,
 	});
 	master.merge(develop,
 		{ messageColor: "blue",
 		messageFont: "normal 12pt Arial",
 		messageDisplay: "bold",
-		sha1: info[index].hash,
+		sha1: info[21].hash,
 		onClick: clickFunction,
 	});
 
