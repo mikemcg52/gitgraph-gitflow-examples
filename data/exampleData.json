@@ -26,13 +26,13 @@
         },
         {
             "index": 4,
-            "title": "",
+            "title": "A Second Hotfix",
             "label": "This is another hotfix, this one being worked in parallel with an addiitonal hotfix.  This one is targeted to be pushed to production first.",
             "hash": "ov5en04kig9t718m88vxk"
         },
         {
             "index": 5,
-            "title": "",
+            "title": "Feature Branch",
             "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the development branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
             "hash": "azzif0v909lnhgets56wdf"
         },
@@ -81,7 +81,7 @@
         {
             "index": 13,
             "title": "Merge into Master",
-            "label": "When the hot fix is ready this branch is merged back into master and deployed to Production.",
+            "label": "When the hot fix is ready this branch is merged back into master, deployed to Production and tagged.",
             "hash": "a7a00ac3731ad5759f6ecdfc"
         },
         {
@@ -93,7 +93,7 @@
         {
             "index": 15,
             "title": "Merge feature into Development",
-            "label": "To support integration testing the feature branch is merged into development.  Typically the development branch will be deployed to a test server",
+            "label": "To support integration testing the feature branch is merged into the target release branch.  Typically, with this approach, the release branch will be deployed to a test server",
             "hash": "412a85705c0202786805c535"
         },
         {
@@ -140,7 +140,150 @@
         }
     ],  
     "example2": [
-
+        {
+            "index": 0,
+            "title": "Initial Master Branch",
+            "label": "This is the starting point for the flow.  The Master branch should always be in synch with Production.",
+            "hash": "0lp2x9vc0g22id11wf6cy1"
+        },
+        {
+            "index": 1,
+            "title": "Release 2.0 Branch",
+            "label": "This branch is used to prepare the 2.0 release.  Features intended for that release will be merged and tested here.",
+            "hash": "sizwj37si5lrei27drfpwo"
+        },
+        {
+            "index": 2,
+            "title": "Product Hot Fixes",
+            "label": "To address hot fixes to deal with Production problems a bug branch is created off of master.",
+            "hash": "h22rx8yqcgr086y0uinwubl"
+        },
+        {
+            "index": 3,
+            "title": "Merge into Development",
+            "label": "The hot fix should be merged back into the development branch so that testing can proceed with as close a representation of the code as it will look when deployed to Production as possible.  This is ideally done by merging the master branch back into development.",
+            "hash": "a6oyby2k106548f23rlyi"
+        },
+        {
+            "index": 4,
+            "title": "A Second Hotfix",
+            "label": "This is another hotfix, this one being worked in parallel with an addiitonal hotfix.  This one is targeted to be pushed to production first.",
+            "hash": "ov5en04kig9t718m88vxk"
+        },
+        {
+            "index": 5,
+            "title": "Feature Branch",
+            "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the development branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+            "hash": "azzif0v909lnhgets56wdf"
+        },
+        {
+            "index": 6,
+            "title": "Release 3.0.0 Feature",
+            "label": "A feature intended for Release 3.0.0 is branched off of that release branch.",
+            "hash": "beydwq7s9zuwv987ln26c"
+        },
+        {
+            "index": 7,
+            "title": "Another Release Branch",
+            "label": "A second, parallel release branch is created.  This is targetted to be released on a different schedule from Release 2.0.0.",
+            "hash": "w0zo1dtq5jfptic6jfzst9"
+        },
+        {
+            "index": 8,
+            "title": "",
+            "label": "While testing the release bug fixes may need to be applied.  These should be done on the release branch (a bug branch can be created here if the bug fix is complicated so as not to delay testing because of 'work in progress'.  Once the testing is complete the release branch is merged into master and the release pushed to production.",
+            "hash": "ne72o9bntd4l7t2eh74wa"
+        },
+        {
+            "index": 9,
+            "title": "",
+            "label": "The final step in this cycle is to merge master back into development.  This insures that development has all of the bug fixes created during the release testing cycle as well as all of the hot fixes from master.",
+            "hash": "zh204u3tiwbv8s94v8mf"
+        },
+        {
+            "index": 10,
+            "title": "Release process",
+            "label": "Merge the approved bug fix into master, push to production and tag the commit",
+            "hash": "d293083ed96c25b632e2fe"
+        },
+        {
+            "index": 11,
+            "title": "Back merge",
+            "label": "Before testing is completed a 'back merge' from the master branch to the bug branch must be done.  This is done to resolve any merge conflicts and to allow testing of an accurate representation that will be pushed to production.",
+            "hash": "94d645308d6684c5cd0896a"
+        },
+        {
+            "index": 12,
+            "title": "Parallel Bug Fix",
+            "label": "A second bug fix needs to be worked on in parallel.  This is done on a parallel branch.",
+            "hash": "6ee4b307116b78b1eeb5c170"
+        },
+        {
+            "index": 13,
+            "title": "Merge into Master",
+            "label": "When the hot fix is ready this branch is merged back into master, deployed to Production and tagged.",
+            "hash": "a7a00ac3731ad5759f6ecdfc"
+        },
+        {
+            "index": 14,
+            "title": "Merge into Master",
+            "label": "Any additional work is done against the merged code.  this includes addressing any conflicts between the parallel bug fixes.",
+            "hash": "38680f1cafcb00b55fe346a26"
+        },
+        {
+            "index": 15,
+            "title": "Merge feature into Release Branch",
+            "label": "To support integration testing the feature branch is merged into the target release branch.  Typically this release branch will be deployed to a test server",
+            "hash": "412a85705c0202786805c535"
+        },
+        {
+            "index": 16,
+            "title": "Merge Release 2.0.0  into the Feature 2 branch",
+            "label": "To support additional testing and resolve conflicts the target release branch is merged into the feature 2 branch.",
+            "hash": "d09ee8d7a43fce30551eb0762"
+        },
+        {
+            "index": 17,
+            "title": "Merge feature branch to development",
+            "label": "With the decision made to include feature 2 in the next release the feature 2 branch is merged into development.",
+            "hash": "1ef4bf23d0765345bfa8fd7d6d"
+        },
+        {
+            "index": 18,
+            "title": "Create the Release branch",
+            "label": "The release process is begun by creating a Release branch. All subsequent changes in preparation for the release will be done on this branch. The master branch is merged in to insure that",
+            "hash": "3b872b2358aaae6bacf6d3d42f"
+        },
+        {
+            "index": 19,
+            "title": "Work on the Release branch",
+            "label": "The release process is begun by creating a Release branch. All subsequent changes in preparation for the release will be done on this branch. The master branch is merged in to insure that",
+            "hash": "4c760f7cb7eff899a7fab42eb"
+        },
+        {
+            "index": 20,
+            "title": "Release to production",
+            "label": "Once the release is ready merge it into the master branch, push to production and tag the commit",
+            "hash": "e9e30249696167a76bb6870ddce"
+        },
+        {
+            "index": 21,
+            "title": "Merge master back into development",
+            "label": "To keep the development branch up to date we merge master back into development",
+            "hash": "b9e5fd63b7b6dbd4005fc942be1e"
+        },
+        {
+            "index": 22,
+            "title": "Feature development continues",
+            "label": "To keep the development branch up to date we merge master back into development",
+            "hash": "d559b82dce3a95417506d176ef9e4"
+        },
+        {
+            "index": 23,
+            "title": "Another Feature Intended for Release 2.0.0",
+            "label": "Feature development continues in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the development branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+            "hash": "0db056eba68be4291fdbb40a2db24"
+        }
     ],
     "example3": [
         

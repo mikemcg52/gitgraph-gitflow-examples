@@ -21,13 +21,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
-app.get('/1', (req, res) => {
+/* app.get('/1', (req, res) => {
 	res.sendFile(path.join(__dirname+'/public/example1.html'));
-});
-app.get('/1p', exampleController.example1);
-app.get('/2', (req, res) => {
-	res.sendFile(path.join(__dirname+'/public/example2.html'));
-});
+}); */
+app.get('/1', exampleController.example1);
+
+app.get('/2', exampleController.example2);
+
 app.get('/3', (req, res) => {
 	res.sendFile(path.join(__dirname+'/public/example3.html'));
 });

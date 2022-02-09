@@ -62,25 +62,6 @@ $('document').ready(() => {
 				displayHash: false,
 			},
 		},
-		/*merge: {
-			spacingY: -30,
-			dot: {
-				size: 8,
-				strokeColor: "#000000",
-				strokeWidth: 4
-			},
-			tag: {
-				font: "normal 10pt Arial",
-				color: "yellow"
-			},
-			message: {
-				color: "blue",
-				font: "normal 14pt Arial",
-				displayAuthor: false,
-				displayBranch: false,
-				displayHash: false,
-			}
-		},*/
 		arrow: {
 			size: 8,
 			offset: 3
@@ -121,21 +102,13 @@ $('document').ready(() => {
 		reverseArrow: false, // to make arrows point to ancestors, if displayed
 		orientation: "vertical",
 		author: "",
-		//mode: "compact" // special compact mode: hide messages & compact graph
 	};
 	var gitGraph = new GitGraph(config);
-	/*	var gitgraph = new GitGraph({
-			template: "blackarrow",
-			reverseArrow: false,
-			orientation: "horizontal",
-			//mode: "compact"
-		});*/
 
 	/************************
 	 * BRANCHES AND COMMITS *
 	 ************************/
 
-	let index = 0;
 	// Create branch named "master"
 	var master = gitGraph.branch({name: "master",
 		column: masterCol});
@@ -147,7 +120,6 @@ $('document').ready(() => {
 		sha1: info[0].hash,
 		onClick: clickFunction,
 	});
-	index++;
 
 	// create development branch
 	var develop = gitGraph.branch({
@@ -160,7 +132,6 @@ $('document').ready(() => {
 		sha1: info[1].hash,
 		onClick: clickFunction,
 	});
-	index++;
 
 	// create support hotfix branch
 	var support_10x = gitGraph.branch({
@@ -188,7 +159,6 @@ $('document').ready(() => {
 		tag: "v1.0.1",
 		onClick: clickFunction,
 	})
-	index++;
 	const feature1 = gitGraph.branch({
 		parentBranch: develop,
 		name: "feature/1",
@@ -206,7 +176,6 @@ $('document').ready(() => {
 		sha1: info[3].hash,
 		onClick: clickFunction
 	})
-	index++;
 
 	// create another support hotfix branch
 	var support_20x = gitGraph.branch({
@@ -375,7 +344,7 @@ $('document').ready(() => {
 	});
 
 
-	function clickFunction(commit) {
+	/* function clickFunction(commit) {
 		//alert(`Commit ${commit.hash} selected`);
 		const msg = info.find((el) => {
 			if (el.hash === commit.sha1) {
@@ -390,7 +359,7 @@ $('document').ready(() => {
 		} else {
 			alert(`Not found ${commit.sha1}`)
 		}
-	}
+	} */
 	/*gitGraph.branch("HotFix 1", {parentBranch: "master"})
 
 	// Add few commits on master
