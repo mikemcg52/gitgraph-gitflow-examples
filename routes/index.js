@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'GitGraph Examples v1.3.0' });
+  res.render('index', { title: 'GitGraph Examples v2.0.0' });
 });
 
 
