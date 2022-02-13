@@ -137,7 +137,7 @@ $('document').ready(() => {
 	});
 
 	// create support hotfix branch
-	var support_10x = gitGraph.branch({
+	const support_10x = gitGraph.branch({
 		parentBranch: master,
 		name: "support/v1.0.1",
 		column: supportCol
@@ -174,7 +174,7 @@ $('document').ready(() => {
 		sha1: info[5].hash,
 		onClick: clickFunction,
 	});
-	var release2 = gitGraph.branch({
+	const release2 = gitGraph.branch({
 		parentBranch: master,
 		name: "release 3.0.0",
 		column: release2Col
@@ -185,13 +185,13 @@ $('document').ready(() => {
 		onClick: clickFunction,
 	})
 	// create another support hotfix branch
-	var support_20x = gitGraph.branch({
+	const support_20x = gitGraph.branch({
 		parentBranch: master,
 		name: "support/v1.0.2",
 		column: supportCol
 	});
 	// create another support hotfix branch
-	var support_30x = gitGraph.branch({
+	const support_30x = gitGraph.branch({
 		parentBranch: master,
 		name: "support/v1.0.3",
 		column: support2Col
@@ -238,7 +238,7 @@ $('document').ready(() => {
 		message: "A feature to go into v3.0.0",
 		messageColor: "brown",
 		onClick: clickFunction,
-		sha1: info[6].hash
+		sha1: info[5].hash
 	});
 	master.merge(support_30x, {
 		message: "Merge master into 1.0.3 branch",
@@ -256,6 +256,17 @@ $('document').ready(() => {
 		onClick: clickFunction,
 	})
 
+	const feature4 = gitGraph.branch({
+		parentBranch: release2,
+		name: "feature/4",
+		column: featureCol4
+	});
+	feature4.commit({
+		message: "Another feature to go into v3.0.0",
+		messageColor: "brown",
+		onClick: clickFunction,
+		sha1: info[5].hash
+	})
 	const feature2 = gitGraph.branch({
 		parentBranch: release1,
 		name: "feature/2",
@@ -269,7 +280,7 @@ $('document').ready(() => {
 	});
 	feature1.commit({
 		messageDisplay: false,
-		sha1: info[5].hash,
+		sha1: info[21].hash,
 		onClick: clickFunction,
 	});
 	
@@ -278,17 +289,11 @@ $('document').ready(() => {
 		onClick: clickFunction,
 		sha1: info[15].hash
 	});
-
-	const feature4 = gitGraph.branch({
-		parentBranch: release2,
-		name: "feature/4",
-		column: featureCol4
-	});
 	
 	feature3.commit({
 		messageDisplay: false,
 		onClick: clickFunction,
-		sha1: info[6].hash
+		sha1: info[21].hash
 	});
 	feature3.merge(release2, {
 		messageColor: "brown",
@@ -299,7 +304,7 @@ $('document').ready(() => {
 	feature2.commit({
 		messageDisplay: false,
 		onClick: clickFunction,
-		sha1: info[23].hash
+		sha1: info[21].hash
 	});
 
 	release1.merge(feature2, {
@@ -312,20 +317,23 @@ $('document').ready(() => {
 		onClick: clickFunction,
 		sha1: info[15].hash
 	});
-//Pick up here
-	feature4.commit({
-		message: "Another feature to go into v3.0.0",
-		messageColor: "brown",
+
+	release2.merge(feature4,{
+		messageColor: "green",
 		onClick: clickFunction,
-		sha1: info[15].hash
+		sha1: info[17].hash
 	})
 	feature4.commit({
 		messageDisplay: false,
 		onClick: clickFunction,
-		sha1: info[15].hash
+		sha1: info[21].hash
 	
 	});
-	feature4.merge(release2, {messageColor: "brown"});
+	feature4.merge(release2, {
+		messageColor: "brown",
+		onClick: clickFunction,
+		sha1: info[15].hash
+	});
 
 	/*var release_100 = gitGraph.branch({
 		parentBranch: release1,
@@ -335,29 +343,41 @@ $('document').ready(() => {
 	master.merge(release1, {message: "Merge master into release branch",
 			messageColor: "blue",
 			messageFont: "normal 14pt Arial",
-			messageDisplay: "bold"
+			messageDisplay: "bold",
+			onClick: clickFunction,
+			sha1: info[18].hash
 	})
 
 	release1.commit({
 		message: "Start v2.0.0-rc Release Candidate builds",
-		tag: "v2.0.0-rc",
-		tagColor: 'gray'
+		//tag: "v2.0.0-rc",
+		tagColor: 'gray',
+		onClick: clickFunction,
+		sha1: info[19].hash
 	});
 	/*develop.commit({
 		messageDisplay: false
 	});*/
-	release1.commit(stabilizationCommit);
+	release1.commit({
+		onClick: clickFunction,
+		sha1: info[19].hash,
+		...stabilizationCommit
+	});
 
 	release1.merge(master, {
 		dotStrokeWidth: 10,
 		message: "Release v2.0.0 tagged",
-		tag: "v2.0.0"
+		tag: "v2.0.0",
+		onClick: clickFunction,
+		sha1: info[14].hash
 	});
 	master.merge(release2, { 
 		message: "Merge master into release branch",
 		messageColor: "blue",
 		messageFont: "normal 14pt Arial",
-		messageDisplay: "bold"
+		messageDisplay: "bold",
+		onClick: clickFunction,
+		sha1: info[18].hash
 	});
 
 	release2.commit({
@@ -365,25 +385,21 @@ $('document').ready(() => {
 		//tag: "v3.0.0-rc",
 		tagColor: 'gray',
 		onClick: clickFunction,
-		sha1: info[7].hash
+		sha1: info[19].hash
 	});
-	/*develop.commit({
-		messageDisplay: false
-	});*/
+
 	release2.commit({
 		onClick: clickFunction,
-		sha1: info[7].hash,
+		sha1: info[19].hash,
 		...stabilizationCommit
 	});
 
 	release2.merge(master, {
 		dotStrokeWidth: 10,
 		message: "Release v3.0.0 tagged",
-		tag: "v3.0.0"
+		tag: "v3.0.0",
+		onClick: clickFunction,
+		sha1: info[14].hash
 	});
 
-	/*gitGraph.branch("HotFix 1", {parentBranch: "master"})
-
-	// Add few commits on master
-	gitGraph.commit("My second commit", {"parentCommit": "Initial commit"}).commit("Add awesome feature");*/
 })

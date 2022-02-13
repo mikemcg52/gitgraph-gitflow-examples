@@ -173,7 +173,7 @@
         {
             "index": 5,
             "title": "Feature Branch",
-            "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the development branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+            "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the release branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
             "hash": "azzif0v909lnhgets56wdf"
         },
         {
@@ -227,7 +227,7 @@
         {
             "index": 14,
             "title": "Merge into Master",
-            "label": "Any additional work is done against the merged code.  this includes addressing any conflicts between the parallel bug fixes.",
+            "label": "The release branch is merged into master, deployed to production and tagged.",
             "hash": "38680f1cafcb00b55fe346a26"
         },
         {
@@ -244,20 +244,20 @@
         },
         {
             "index": 17,
-            "title": "Merge feature branch to development",
-            "label": "With the decision made to include feature 2 in the next release the feature 2 branch is merged into development.",
+            "title": "Merge Release 3.0.0 into the Feature 4 branch",
+            "label": "To support additional testing and resolve conflicts the target release branch is merged into the feature 4 branch.",
             "hash": "1ef4bf23d0765345bfa8fd7d6d"
         },
         {
             "index": 18,
-            "title": "Create the Release branch",
-            "label": "The release process is begun by creating a Release branch. All subsequent changes in preparation for the release will be done on this branch. The master branch is merged in to insure that",
+            "title": "Merge Master into the Release Branch",
+            "label": "The actual release process is begun by merging master into the release branch.  This updates the release branch with any bug fixes and/or releases that have been pushed to production.",
             "hash": "3b872b2358aaae6bacf6d3d42f"
         },
         {
             "index": 19,
             "title": "Work on the Release branch",
-            "label": "The release process is begun by creating a Release branch. All subsequent changes in preparation for the release will be done on this branch. The master branch is merged in to insure that",
+            "label": "As the release is prepared work is done directly on the release branch. All subsequent changes in preparation for the release will be done on this branch.",
             "hash": "4c760f7cb7eff899a7fab42eb"
         },
         {
@@ -268,8 +268,8 @@
         },
         {
             "index": 21,
-            "title": "Merge master back into development",
-            "label": "To keep the development branch up to date we merge master back into development",
+            "title": "Another Feature commit",
+            "label": "Development continues on the feature branch",
             "hash": "b9e5fd63b7b6dbd4005fc942be1e"
         },
         {
@@ -281,7 +281,7 @@
         {
             "index": 23,
             "title": "Another Feature Intended for Release 2.0.0",
-            "label": "Feature development continues in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the development branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+            "label": "Feature development continues in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the release branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
             "hash": "0db056eba68be4291fdbb40a2db24"
         }
     ],
