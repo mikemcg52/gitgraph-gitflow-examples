@@ -1,0 +1,449 @@
+{
+    "example1": {
+        "desc": "This is a typical 'GitFlow' example.  Feature and bug work are done on their own, dedicated branches.  For features, once a feature is determined to be stable and ready for integration testing it is merged into the development branch.  Feature branches should only be merged into development when the decision has been made to commit to including them in the next release.  Once a feature has been merged into the development branch reversing course and removing it from the release can be complicated and can introduce new opportunities for errors in the process.  Once all of the features are complete and development is stable a 'Release Branch' is created.  This branch is typically labelled consistently with the target release (i.e. Release/2.0.0).  We are using semantic versioning here <Major Release>.<Minor Release>.<Patch Level>.  Final work (bug fixes, typically) occurs on the Release branch until it is ready to push to production.  All released branches should be tagged in the repository for tracking purposes.  There are several points in this process where the Master or Release branch is 'back merged' into a working branch.  This is done to insure that testing proceeds against an accurate representation of the final, target environment, and to insure that changes to the target branch are not lost during the feature to target merge process.",
+        "commits": [
+            {
+                "index": 0,
+                "title": "Initial Master Branch",
+                "label": "This is the starting point for the flow.  The Master branch should always be in synch with Production.",
+                "hash": "0lp2x9vc0g22id11wf6cy1"
+            },
+            {
+                "index": 1,
+                "title": "Development Branch",
+                "label": "The Development branch is intially created off of the Master branch.  Feature branches intended for the next release should be merged into this branch when they are ready to be pushed to an integration test server for additional testing",
+                "hash": "sizwj37si5lrei27drfpwo"
+            },
+            {
+                "index": 2,
+                "title": "Product Hot Fixes",
+                "label": "To address hot fixes to deal with Production problems a bug branch is created off of master.",
+                "hash": "h22rx8yqcgr086y0uinwubl"
+            },
+            {
+                "index": 3,
+                "title": "Merge into Development",
+                "label": "The hot fix should be merged back into the development branch so that testing can proceed with as close a representation of the code as it will look when deployed to Production as possible.  This is ideally done by merging the master branch back into development.",
+                "hash": "a6oyby2k106548f23rlyi"
+            },
+            {
+                "index": 4,
+                "title": "A Second Hotfix",
+                "label": "This is another hotfix, this one being worked in parallel with an addiitonal hotfix.  This one is targeted to be pushed to production first.",
+                "hash": "ov5en04kig9t718m88vxk"
+            },
+            {
+                "index": 5,
+                "title": "Feature Branch",
+                "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the development branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+                "hash": "azzif0v909lnhgets56wdf"
+            },
+            {
+                "index": 6,
+                "title": "",
+                "label": "Multiple feature branches can be worked on in parallel.",
+                "hash": "beydwq7s9zuwv987ln26c"
+            },
+            {
+                "index": 7,
+                "title": "",
+                "label": "When the development branch is ready for release a release branch is created off of development.  Doing this frees the development branch up so work can begin on the next release.  At this point the master branch should be 'back merged' into the release branch to resolve any merge conflicts that may have arisen from hot fixes applied to master.",
+                "hash": "w0zo1dtq5jfptic6jfzst9"
+            },
+            {
+                "index": 8,
+                "title": "",
+                "label": "While testing the release bug fixes may need to be applied.  These should be done on the release branch (a bug branch can be created here if the bug fix is complicated so as not to delay testing because of 'work in progress'.  Once the testing is complete the release branch is merged into master and the release pushed to production.",
+                "hash": "ne72o9bntd4l7t2eh74wa"
+            },
+            {
+                "index": 9,
+                "title": "",
+                "label": "The final step in this cycle is to merge master back into development.  This insures that development has all of the bug fixes created during the release testing cycle as well as all of the hot fixes from master.",
+                "hash": "zh204u3tiwbv8s94v8mf"
+            },
+            {
+                "index": 10,
+                "title": "Release process",
+                "label": "Merge the approved bug fix into master, push to production and tag the commit",
+                "hash": "d293083ed96c25b632e2fe"
+            },
+            {
+                "index": 11,
+                "title": "Back merge",
+                "label": "Before testing is completed a 'back merge' from the master branch to the bug branch must be done.  This is done to resolve any merge conflicts and to allow testing of an accurate representation that will be pushed to production.",
+                "hash": "94d645308d6684c5cd0896a"
+            },
+            {
+                "index": 12,
+                "title": "Parallel Bug Fix",
+                "label": "A second bug fix needs to be worked on in parallel.  This is done on a parallel branch.",
+                "hash": "6ee4b307116b78b1eeb5c170"
+            },
+            {
+                "index": 13,
+                "title": "Merge into Master",
+                "label": "When the hot fix is ready this branch is merged back into master, deployed to Production and tagged.",
+                "hash": "a7a00ac3731ad5759f6ecdfc"
+            },
+            {
+                "index": 14,
+                "title": "Merge into Master",
+                "label": "Any additional work is done against the merged code.  this includes addressing any conflicts between the parallel bug fixes.",
+                "hash": "38680f1cafcb00b55fe346a26"
+            },
+            {
+                "index": 15,
+                "title": "Merge feature into Development",
+                "label": "To support integration testing the feature branch is merged into the target release branch.  Typically, with this approach, the release branch will be deployed to a test server",
+                "hash": "412a85705c0202786805c535"
+            },
+            {
+                "index": 16,
+                "title": "Merge development into feature branch",
+                "label": "To support additional testing the development branch with feature 1 is merged into the feature 2 branch.",
+                "hash": "d09ee8d7a43fce30551eb0762"
+            },
+            {
+                "index": 17,
+                "title": "Merge feature branch to development",
+                "label": "With the decision made to include feature 2 in the next release the feature 2 branch is merged into development.",
+                "hash": "1ef4bf23d0765345bfa8fd7d6d"
+            },
+            {
+                "index": 18,
+                "title": "Create the Release branch",
+                "label": "The release process is begun by creating a Release branch. All subsequent changes in preparation for the release will be done on this branch.",
+                "hash": "3b872b2358aaae6bacf6d3d42f"
+            },
+            {
+                "index": 19,
+                "title": "Work on the Release branch",
+                "label": "As the release is prepared work is done directly on the release branch. All subsequent changes in preparation for the release will be done on this branch.",
+                "hash": "4c760f7cb7eff899a7fab42eb"
+            },
+            {
+                "index": 20,
+                "title": "Release to production",
+                "label": "Once the release is ready merge it into the master branch, push to production and tag the commit",
+                "hash": "e9e30249696167a76bb6870ddce"
+            },
+            {
+                "index": 21,
+                "title": "Merge master back into development",
+                "label": "To keep the development branch up to date we merge master back into development",
+                "hash": "b9e5fd63b7b6dbd4005fc942be1e"
+            },
+            {
+                "index": 22,
+                "title": "Feature development continues",
+                "label": "To keep the development branch up to date we merge master back into development",
+                "hash": "d559b82dce3a95417506d176ef9e4"
+            },
+            {
+                "index": 23,
+                "title": "Merge Master into the Release Branch",
+                "label": "To ensure that the final release testing is done against an accurate version of what will be pushed to production master is merged into the release branch.  This also insures that any bug fixes from production are in the release, preventing possible regression errors.",
+                "hash": "1198c9f14e9231a9f27c0d81196b8"
+            }
+        ]
+    },  
+    "example2": {
+        "desc": "This is a modified approach to branching and releasing that may be appropriate to larger organizations with multiple teams working on offset release schedules.  Parallel Release branches are created and the teams work against the release branch that corresponds to their target release schedule.  Feature and bug branches are used to isolate work until it is ready to commit.  As with the GitFlow approach work is done on these independent branches until it is ready to commit to the release.  At that point the feature/bug branch is merged into the target release branch and integration testing continues with the merged code.  This approach benefits from having separate testing environments dedicated to each release branch.  Back merges are done to insure that testing is done against an accurate representation of the target environment and that changes to the target branch are not lost during the feature to target merge process.",
+        "commits": [
+            {
+                "index": 0,
+                "title": "Initial Master Branch",
+                "label": "This is the starting point for the flow.  The Master branch should always be in synch with Production.",
+                "hash": "0lp2x9vc0g22id11wf6cy1"
+            },
+            {
+                "index": 1,
+                "title": "Release 2.0 Branch",
+                "label": "This branch is used to prepare the 2.0 release.  Features intended for that release will be merged and tested here.",
+                "hash": "sizwj37si5lrei27drfpwo"
+            },
+            {
+                "index": 2,
+                "title": "Product Hot Fixes",
+                "label": "To address hot fixes to deal with Production problems a bug branch is created off of master.",
+                "hash": "h22rx8yqcgr086y0uinwubl"
+            },
+            {
+                "index": 3,
+                "title": "Merge into Development",
+                "label": "The hot fix should be merged back into the development branch so that testing can proceed with as close a representation of the code as it will look when deployed to Production as possible.  This is ideally done by merging the master branch back into development.",
+                "hash": "a6oyby2k106548f23rlyi"
+            },
+            {
+                "index": 4,
+                "title": "A Second Hotfix",
+                "label": "This is another hotfix, this one being worked in parallel with an addiitonal hotfix.  This one is targeted to be pushed to production first.",
+                "hash": "ov5en04kig9t718m88vxk"
+            },
+            {
+                "index": 5,
+                "title": "Feature Branch",
+                "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the release branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+                "hash": "azzif0v909lnhgets56wdf"
+            },
+            {
+                "index": 6,
+                "title": "Release 3.0.0 Feature",
+                "label": "A feature intended for Release 3.0.0 is branched off of that release branch.",
+                "hash": "beydwq7s9zuwv987ln26c"
+            },
+            {
+                "index": 7,
+                "title": "Another Release Branch",
+                "label": "A second, parallel release branch is created.  This is targetted to be released on a different schedule from Release 2.0.0.",
+                "hash": "w0zo1dtq5jfptic6jfzst9"
+            },
+            {
+                "index": 8,
+                "title": "",
+                "label": "While testing the release bug fixes may need to be applied.  These should be done on the release branch (a bug branch can be created here if the bug fix is complicated so as not to delay testing because of 'work in progress'.  Once the testing is complete the release branch is merged into master and the release pushed to production.",
+                "hash": "ne72o9bntd4l7t2eh74wa"
+            },
+            {
+                "index": 9,
+                "title": "",
+                "label": "The final step in this cycle is to merge master back into development.  This insures that development has all of the bug fixes created during the release testing cycle as well as all of the hot fixes from master.",
+                "hash": "zh204u3tiwbv8s94v8mf"
+            },
+            {
+                "index": 10,
+                "title": "Release process",
+                "label": "Merge the approved bug fix into master, push to production and tag the commit",
+                "hash": "d293083ed96c25b632e2fe"
+            },
+            {
+                "index": 11,
+                "title": "Back merge",
+                "label": "Before testing is completed a 'back merge' from the master branch to the bug branch must be done.  This is done to resolve any merge conflicts and to allow testing of an accurate representation that will be pushed to production.",
+                "hash": "94d645308d6684c5cd0896a"
+            },
+            {
+                "index": 12,
+                "title": "Parallel Bug Fix",
+                "label": "A second bug fix needs to be worked on in parallel.  This is done on a parallel branch.",
+                "hash": "6ee4b307116b78b1eeb5c170"
+            },
+            {
+                "index": 13,
+                "title": "Merge into Master",
+                "label": "When the hot fix is ready this branch is merged back into master, deployed to Production and tagged.",
+                "hash": "a7a00ac3731ad5759f6ecdfc"
+            },
+            {
+                "index": 14,
+                "title": "Merge into Master",
+                "label": "The release branch is merged into master, deployed to production and tagged.",
+                "hash": "38680f1cafcb00b55fe346a26"
+            },
+            {
+                "index": 15,
+                "title": "Merge feature into Release Branch",
+                "label": "To support integration testing the feature branch is merged into the target release branch.  Typically this release branch will be deployed to a test server",
+                "hash": "412a85705c0202786805c535"
+            },
+            {
+                "index": 16,
+                "title": "Merge Release 2.0.0  into the Feature 2 branch",
+                "label": "To support additional testing and resolve conflicts the target release branch is merged into the feature 2 branch.",
+                "hash": "d09ee8d7a43fce30551eb0762"
+            },
+            {
+                "index": 17,
+                "title": "Merge Release 3.0.0 into the Feature 4 branch",
+                "label": "To support additional testing and resolve conflicts the target release branch is merged into the feature 4 branch.",
+                "hash": "1ef4bf23d0765345bfa8fd7d6d"
+            },
+            {
+                "index": 18,
+                "title": "Merge Master into the Release Branch",
+                "label": "The actual release process is begun by merging master into the release branch.  This updates the release branch with any bug fixes and/or releases that have been pushed to production.",
+                "hash": "3b872b2358aaae6bacf6d3d42f"
+            },
+            {
+                "index": 19,
+                "title": "Work on the Release branch",
+                "label": "As the release is prepared work is done directly on the release branch. All subsequent changes in preparation for the release will be done on this branch.",
+                "hash": "4c760f7cb7eff899a7fab42eb"
+            },
+            {
+                "index": 20,
+                "title": "Release to production",
+                "label": "Once the release is ready merge it into the master branch, push to production and tag the commit",
+                "hash": "e9e30249696167a76bb6870ddce"
+            },
+            {
+                "index": 21,
+                "title": "Another Feature commit",
+                "label": "Development continues on the feature branch",
+                "hash": "b9e5fd63b7b6dbd4005fc942be1e"
+            },
+            {
+                "index": 22,
+                "title": "Feature development continues",
+                "label": "To keep the development branch up to date we merge master back into development",
+                "hash": "d559b82dce3a95417506d176ef9e4"
+            },
+            {
+                "index": 23,
+                "title": "Another Feature Intended for Release 2.0.0",
+                "label": "Feature development continues in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the release branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+                "hash": "0db056eba68be4291fdbb40a2db24"
+            }
+        ]
+    },
+    "example3": {
+        "desc": "This approach may be appropriate for smaller teams just starting with branch management.  That said, we recommend that even in that situation the standard Gitflow process be implemented.  In this example all work is done on the development branch and, once the release is ready a Release branch is created and the normal releasae process is follwed.  The team will find that they have outgrown this approach when work needs to be done that is not targetted for the release currently being worked on.  At that point Feature branches will need to be introduced and a transition to the standard Gitflow process should be adopted.",
+        "commits": [
+            {
+                "index": 0,
+                "title": "Initial Master Branch",
+                "label": "This is the starting point for the flow.  The Master branch should always be in synch with Production.",
+                "hash": "0lp2x9vc0g22id11wf6cy1"
+            },
+            {
+                "index": 1,
+                "title": "Development Branch",
+                "label": "The Development branch is intially created off of the Master branch.  Work will continue directly on this branch.  As this branch is updated it would typically be pushed to an integration test server for additional testing.",
+                "hash": "sizwj37si5lrei27drfpwo"
+            },
+            {
+                "index": 2,
+                "title": "Product Hot Fixes",
+                "label": "To address hot fixes to deal with Production problems a bug branch is created off of master.",
+                "hash": "h22rx8yqcgr086y0uinwubl"
+            },
+            {
+                "index": 3,
+                "title": "Merge into Development",
+                "label": "The hot fix should be merged back into the development branch so that testing can proceed with as close a representation of the code as it will look when deployed to Production as possible.  This is ideally done by merging the master branch back into development.",
+                "hash": "a6oyby2k106548f23rlyi"
+            },
+            {
+                "index": 4,
+                "title": "A Second Hotfix",
+                "label": "This is another hotfix, this one being worked in parallel with an addiitonal hotfix.  This one is targeted to be pushed to production first.",
+                "hash": "ov5en04kig9t718m88vxk"
+            },
+            {
+                "index": 5,
+                "title": "Feature Branch",
+                "label": "Feature development can go on in parallel.  Each feature is worked on in its own branch.  When the feature is complete it can be merged into the release branch.  If there are questions about whether to include the feature in the release it should not be merged until those questions are resolved.",
+                "hash": "azzif0v909lnhgets56wdf"
+            },
+            {
+                "index": 6,
+                "title": "Release 3.0.0 Feature",
+                "label": "A feature intended for Release 3.0.0 is branched off of that release branch.",
+                "hash": "beydwq7s9zuwv987ln26c"
+            },
+            {
+                "index": 7,
+                "title": "Another Release Branch",
+                "label": "A second, parallel release branch is created.  This is targetted to be released on a different schedule from Release 2.0.0.",
+                "hash": "w0zo1dtq5jfptic6jfzst9"
+            },
+            {
+                "index": 8,
+                "title": "",
+                "label": "While testing the release bug fixes may need to be applied.  These should be done on the release branch (a bug branch can be created here if the bug fix is complicated so as not to delay testing because of 'work in progress'.  Once the testing is complete the release branch is merged into master and the release pushed to production.",
+                "hash": "ne72o9bntd4l7t2eh74wa"
+            },
+            {
+                "index": 9,
+                "title": "",
+                "label": "The final step in this cycle is to merge master back into development.  This insures that development has all of the bug fixes created during the release testing cycle as well as all of the hot fixes from master.",
+                "hash": "zh204u3tiwbv8s94v8mf"
+            },
+            {
+                "index": 10,
+                "title": "Release process",
+                "label": "Merge the approved bug fix into master, push to production and tag the commit",
+                "hash": "d293083ed96c25b632e2fe"
+            },
+            {
+                "index": 11,
+                "title": "Back merge",
+                "label": "Before testing is completed a 'back merge' from the master branch to the bug branch must be done.  This is done to resolve any merge conflicts and to allow testing of an accurate representation that will be pushed to production.",
+                "hash": "94d645308d6684c5cd0896a"
+            },
+            {
+                "index": 12,
+                "title": "Parallel Bug Fix",
+                "label": "A second bug fix needs to be worked on in parallel.  This is done on a parallel branch.",
+                "hash": "6ee4b307116b78b1eeb5c170"
+            },
+            {
+                "index": 13,
+                "title": "Merge into Master",
+                "label": "When the hot fix is ready this branch is merged back into master, deployed to Production and tagged.",
+                "hash": "a7a00ac3731ad5759f6ecdfc"
+            },
+            {
+                "index": 14,
+                "title": "Merge into Master",
+                "label": "The release branch is merged into master, deployed to production and tagged.",
+                "hash": "38680f1cafcb00b55fe346a26"
+            },
+            {
+                "index": 15,
+                "title": "Merge Master Back into Development",
+                "label": "To insure that the development branch is up to date and contains any work done on the release branch master is merged into development and any potential conflicts resolved before continuing with further work.",
+                "hash": "412a85705c0202786805c535"
+            },
+            {
+                "index": 16,
+                "title": "Work Directly on the Development Branch",
+                "label": "Feature and bug fix work is committed directly to the development branch.  Typically this branch would be kept in synch with a test server.",
+                "hash": "d09ee8d7a43fce30551eb0762"
+            },
+            {
+                "index": 17,
+                "title": "Merge Master into the Release Branch",
+                "label": "To ensure that the final release testing is done against an accurate version of what will be pushed to production master is merged into the release branch.  This also insures that any bug fixes from production are in the release, preventing possible regression errors.",
+                "hash": "1ef4bf23d0765345bfa8fd7d6d"
+            },
+            {
+                "index": 18,
+                "title": "Create the Release branch",
+                "label": "The release process is begun by creating a Release branch. All subsequent changes in preparation for the release will be done on this branch. The master branch is merged in to insure that",
+                "hash": "3b872b2358aaae6bacf6d3d42f"
+            },
+            {
+                "index": 19,
+                "title": "Work on the Release branch",
+                "label": "As the release is prepared work is done directly on the release branch. All subsequent changes in preparation for the release will be done on this branch.",
+                "hash": "4c760f7cb7eff899a7fab42eb"
+            },
+            {
+                "index": 20,
+                "title": "Release to production",
+                "label": "Once the release is ready merge it into the master branch, push to production and tag the commit",
+                "hash": "e9e30249696167a76bb6870ddce"
+            },
+            {
+                "index": 21,
+                "title": "Another Feature commit",
+                "label": "Development continues on the feature branch",
+                "hash": "b9e5fd63b7b6dbd4005fc942be1e"
+            },
+            {
+                "index": 22,
+                "title": "Feature development continues",
+                "label": "To keep the development branch up to date we merge master back into development",
+                "hash": "d559b82dce3a95417506d176ef9e4"
+            },
+            {
+                "index": 23,
+                "title": "Work Continues on the Development Branch",
+                "label": "Now that the release branch has been created work can continue on the development branch on features intended for the next release.",
+                "hash": "0db056eba68be4291fdbb40a2db24"
+            }
+        ]
+    }
+}

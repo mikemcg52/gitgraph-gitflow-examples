@@ -15,4 +15,28 @@ li {
 #gitGraph {
   max-width: 1800px;
 }
+#title {
+  margin-left: 10%;
+}
+.hotfix {
+  margin-top: 40px;
+}
+.hotfix-overlap {
+  margin-top: 68px;
+}
+.hotfix-overlap-backmerge {
+  margin-top: 127px;
+}
+.feature-dev {
+  margin-top: 40px;
+}
+.feature-dev-backmerge {
+  margin-top: 63px;
+}
+.release-branch {
+  margin-top: 30px;
+}
+.instruction {
+  font-style: italic;
+}
 /*# sourceMappingURL=style.css.map */
