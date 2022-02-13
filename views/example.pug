@@ -1,9 +1,12 @@
 
 script.
-  const info = !{JSON.stringify(data)}
+  const info = !{JSON.stringify(data.commits)}
 
-h2= title
-h4.instruction Click on a commit dot for a description of the process at that point
+.row
+  .col-md-4
+    h2= title
+    h4.instruction Click on a commit dot for a description of the process at that point
+  .col-md-8= data.desc
 .graph-holder 
   canvas#gitGraph 
 

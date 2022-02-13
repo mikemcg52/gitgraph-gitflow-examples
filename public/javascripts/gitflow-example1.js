@@ -4,7 +4,7 @@ $('document').ready(() => {
 	 *  CUSTOM TEMPLATES   *
 	 ***********************/
 
-	var myTemplateConfig = {
+	const myTemplateConfig = {
 		colors: ["#F00", "#0F0", "#00F"], // branches colors, 1 per column
 		branch: {
 			lineWidth: 8,
@@ -32,7 +32,7 @@ $('document').ready(() => {
 		}
 	};
 
-	var graphConfig = new GitGraph.Template({
+	const graphConfig = new GitGraph.Template({
 		colors: [ "#9993FF", "#47E8D4", "#6BDB52", "#F85BB5", "#FFA657", "#F85BB5" ],
 		branch: {
 			color: "#000000",
@@ -68,7 +68,7 @@ $('document').ready(() => {
 		}
 	});
 
-	var bugFixCommit = {
+	const bugFixCommit = {
 		messageColor: "red",
 		messageAuthorDisplay: false,
 		messageBranchDisplay: false,
@@ -76,20 +76,20 @@ $('document').ready(() => {
 		message: "Bug fix commit(s)"
 	};
 
-	var stabilizationCommit = {
+	const stabilizationCommit = {
 		messageAuthorDisplay: false,
 		messageBranchDisplay: false,
 		messageHashDisplay: false,
 		message: "Release stabilization commit(s)"
 	};
 
-	var featureCol = 0;
-	var featureCol2 = 1;
-	var developCol = 2;
-	var releaseCol = 3;
-	var supportCol = 5;
-	var support2Col = 6;
-	var masterCol = 4;
+	const featureCol = 0;
+	const featureCol2 = 1;
+	const developCol = 2;
+	const releaseCol = 3;
+	const supportCol = 5;
+	const support2Col = 6;
+	const masterCol = 4;
 
 	var myTemplate = new GitGraph.Template(myTemplateConfig);
 
@@ -97,13 +97,13 @@ $('document').ready(() => {
 	 *    INITIALIZATION   *
 	 ***********************/
 
-	var config = {
+	const config = {
 		template: graphConfig, // could be: "blackarrow" or "metro" or `myTemplate` (custom Template object)
 		reverseArrow: false, // to make arrows point to ancestors, if displayed
 		orientation: "vertical",
 		author: "",
 	};
-	var gitGraph = new GitGraph(config);
+	const gitGraph = new GitGraph(config);
 
 	/************************
 	 * BRANCHES AND COMMITS *
@@ -122,7 +122,7 @@ $('document').ready(() => {
 	});
 
 	// create development branch
-	var develop = gitGraph.branch({
+	const develop = gitGraph.branch({
 		parentBranch: master,
 		name: "develop",
 		column: developCol
@@ -134,7 +134,7 @@ $('document').ready(() => {
 	});
 
 	// create support hotfix branch
-	var support_10x = gitGraph.branch({
+	const support_10x = gitGraph.branch({
 		parentBranch: master,
 		name: "support/v1.0.1",
 		column: supportCol
@@ -243,7 +243,8 @@ $('document').ready(() => {
 		sha1: info[11].hash,
 		onClick: clickFunction,
 	})
-	support_30x.commit({sha1: info[14].hash,
+	support_30x.commit({
+		sha1: info[14].hash,
 		onClick: clickFunction,
 		...bugFixCommit
 	});
@@ -289,17 +290,24 @@ $('document').ready(() => {
 		onClick: clickFunction,
 	});
 
-	var release_100 = gitGraph.branch({
+	const release_100 = gitGraph.branch({
 		parentBranch: develop,
 		name: "release/v2.0.0",
 		column: releaseCol
+	});
+	release_100.commit({
+		message: "Start v2.0.0 Release Candidate process",
+		// tag: "v2.0.0-rc",
+		tagColor: 'gray',
+		sha1: info[18].hash,
+		onClick: clickFunction,
 	});
 	master.merge(release_100, {
 		message: "Merge master into release branch",
 		messageColor: "blue",
 		messageFont: "normal 12pt Arial",
 		messageDisplay: "bold",
-		sha1: info[18].hash,
+		sha1: info[23].hash,
 		onClick: clickFunction,
 	})
 
