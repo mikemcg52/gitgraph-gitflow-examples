@@ -21,7 +21,7 @@ module.exports = {
             data: info.example3
         })
     },
-
+    // add for BMG example
     cherry_pick: (req, res) => {
         res.render('cherry_pick', {
             title: 'Cherry-Pick Example',
