@@ -5,6 +5,9 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 RUN npm install --omit=dev
+
+# removed this since it didn't work with the pipeline that publishes
+# to Digital Ocean
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.npm to speed up subsequent builds.
 # Leverage a bind mounts to package.json and package-lock.json to avoid having to copy them into
