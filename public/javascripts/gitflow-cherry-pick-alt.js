@@ -173,7 +173,7 @@ $('document').ready(() => {
 		message: "Second independent feature",
 		messageColor: "green",
 		onClick: clickFunction,
-		sha1: info[23].hash
+		sha1: info[5].hash
 	});
 	const feature3 = gitGraph.branch({
 		parentBranch: master,
@@ -259,7 +259,7 @@ $('document').ready(() => {
 	});
 	release1.commit({
 		messageDisplay: false,
-		sha1: info[1].hash,
+		sha1: info[24].hash,
 		onClick: clickFunction,
 	});
 
@@ -279,7 +279,7 @@ $('document').ready(() => {
 	feature1.merge(release1, {
 		messageColor: "green",
 		onClick: clickFunction,
-		sha1: info[15].hash
+		sha1: info[25].hash
 	});
 
 	feature3.commit({
@@ -290,7 +290,7 @@ $('document').ready(() => {
 	feature3.merge(release1, {
 		messageColor: "brown",
 		onClick: clickFunction,
-		sha1: info[15].hash
+		sha1: info[25].hash
 	});
 
 	feature2.commit({
@@ -323,24 +323,24 @@ $('document').ready(() => {
 			messageFont: "normal 14pt Arial",
 			messageDisplay: "bold",
 			onClick: clickFunction,
-			sha1: info[18].hash
+			sha1: info[17].hash
 	})
 
-	release1.commit({
+	/*release1.commit({
 		message: "Start v2.0.0-rc Release Candidate builds",
 		//tag: "v2.0.0-rc",
 		tagColor: 'gray',
 		onClick: clickFunction,
 		sha1: info[19].hash
 	});
-	/*develop.commit({
+	/!*develop.commit({
 		messageDisplay: false
-	});*/
+	});*!/
 	release1.commit({
 		onClick: clickFunction,
 		sha1: info[19].hash,
 		...stabilizationCommit
-	});
+	});*/
 
 	release1.merge(master, {
 		dotStrokeWidth: 10,
@@ -356,18 +356,18 @@ $('document').ready(() => {
 	})
 	release2.commit({
 		messageDisplay: false,
-		sha1: info[7].hash,
+		sha1: info[24].hash,
 		onClick: clickFunction,
 	})
 	feature2.merge(release2, {
 		messageColor: "green",
 		onClick: clickFunction,
-		sha1: info[15].hash
+		sha1: info[25].hash
 	});
 	feature4.merge(release2, {
 		messageColor: "brown",
 		onClick: clickFunction,
-		sha1: info[15].hash
+		sha1: info[25].hash
 	});
 	/*release2.merge(feature4,{
 		messageColor: "green",
@@ -380,10 +380,10 @@ $('document').ready(() => {
 		messageFont: "normal 14pt Arial",
 		messageDisplay: "bold",
 		onClick: clickFunction,
-		sha1: info[18].hash
+		sha1: info[17].hash
 	});
 
-	release2.commit({
+	/*release2.commit({
 		message: "Start v3.0.0-rc Release Candidate builds",
 		//tag: "v3.0.0-rc",
 		tagColor: 'gray',
@@ -395,7 +395,7 @@ $('document').ready(() => {
 		onClick: clickFunction,
 		sha1: info[19].hash,
 		...stabilizationCommit
-	});
+	});*/
 
 	release2.merge(master, {
 		dotStrokeWidth: 10,

@@ -145,6 +145,18 @@
                 "title": "Merge Master into the Release Branch",
                 "label": "To ensure that the final release testing is done against an accurate version of what will be pushed to production master is merged into the release branch.  This also insures that any bug fixes from production are in the release, preventing possible regression errors.",
                 "hash": "1198c9f14e9231a9f27c0d81196b8"
+            },
+            {
+                "index": 24,
+                "title": "A Release Branch",
+                "label": "Release branches are create to provide a vehicle for publishing change.  Feature branches can be merged in in any order. Work should continue to be done on the feature branches to maintain the integrity of each feature branch.",
+                "hash": "0e5f45add0427fb9e7a370850189f53ae90d6aeb"
+            },
+            {
+                "index": 25,
+                "title": "Merge Feature into Release",
+                "label": "Merge selected features into the target Release branch.",
+                "hash": "2a2b5b854ce35e4210d9d436de6709c6d4434e2f"
             }
         ]
     },
@@ -592,6 +604,18 @@
                 "title": "Work Continues on the Development Branch",
                 "label": "Now that the release branch has been created work can continue on the development branch on features intended for the next release.",
                 "hash": "0db056eba68be4291fdbb40a2db24"
+            },
+            {
+                "index": 24,
+                "title": "A Release Branch",
+                "label": "Release branches are create to provide a vehicle for publishing change.  Feature branches can be merged in in any order. Work should continue to be done on the feature branches to maintain the integrity of each feature branch.",
+                "hash": "0e5f45add0427fb9e7a370850189f53ae90d6aeb"
+            },
+            {
+                "index": 25,
+                "title": "Merge Feature into Release",
+                "label": "Merge selected features into the target Release branch.",
+                "hash": "2a2b5b854ce35e4210d9d436de6709c6d4434e2f"
             }
         ]
     }
