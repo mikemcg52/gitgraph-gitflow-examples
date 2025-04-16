@@ -447,7 +447,7 @@
         ]
     },
     "cherry_pick": {
-        "desc": "This approach may be appropriate for smaller teams just starting with branch management.  That said, we recommend that even in that situation the standard Gitflow process be implemented.  In this example all work is done on the development branch and, once the release is ready a Release branch is created and the normal releasae process is follwed.  The team will find that they have outgrown this approach when work needs to be done that is not targetted for the release currently being worked on.  At that point Feature branches will need to be introduced and a transition to the standard Gitflow process should be adopted.",
+        "desc": "This approach works best for environments where release priorities are subject to frequent changes.  It uses the basic principles of the Gitflow process, but maintains flexibility.  In this example all work is done in Feature branches.  These Feature branches are then merged into Release branches.  These Release branches are used for pre-production pushes to testing and staging environments.  The Release branch is merged into master prior to the production push, and master is pushed to production.  If release priorities change while a Release branch is active a new Release branch can be created and the appropriate Feature branches merged into it.  The old Release branch can be deleted, if that is appropriate.",
         "commits": [
             {
                 "index": 0,
