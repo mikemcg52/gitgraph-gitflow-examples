@@ -30,6 +30,8 @@ app.get('/2', exampleController.example2);
 
 app.get('/3', exampleController.example3);
 
+app.get('/cherry_pick', exampleController.cherry_pick);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "local": "PORT=3002 NODE_ENV=local nodemon ./bin/www"
+    "local": "PORT=3002 NODE_ENV=local nodemon ./bin/www",
+    "run-local": "docker compose up -d",
+    "run-local-build": "docker compose up --build -d"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

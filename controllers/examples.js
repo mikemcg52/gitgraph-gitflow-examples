@@ -2,7 +2,7 @@ const info = require('../data/exampleData.json');
 
 module.exports = {
     example1: (req, res) => {
-        res.render('example1', { 
+        res.render('example1', {
             title: 'Standard Gitflow Approach',
             data: info.example1
         });
@@ -20,5 +20,12 @@ module.exports = {
             title: 'Dev. Branch Only Approach',
             data: info.example3
         })
+    },
+
+    cherry_pick: (req, res) => {
+        res.render('cherry_pick', {
+            title: 'Cherry-Pick Example',
+            data: info.cherry_pick
+        });
     }
 }
